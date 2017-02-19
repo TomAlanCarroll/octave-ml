@@ -26,13 +26,16 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+n = size(X_norm, 2); % number of columns
 
+for col = 1:n % for each feature
+	% Subtract the average from each example in the column
+	mu(col) = mean(X_norm(:, col));
+	X_norm(:, col) = X_norm(:, col) - mu(col);
 
-
-
-
-
-
+	% Divide each example by the standard deviation
+	sigma(col) = std(X_norm(:, col));
+	X_norm(:, col) = X_norm(:, col) ./ sigma(col);
 
 % ============================================================
 
