@@ -17,15 +17,18 @@ for iter = 1:num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
+    n = size(X, 2); % number of columns
 
+    % Calculate hypothesis
+    predictions = X * theta;
 
+    % Calculate these once
+    term1 = alpha * (1 / m);
+    term2 = predictions - y;
 
-
-
-
-
-
-
+    for col = 1:n % for each feature
+        % Update theta
+        theta(col) = theta(col) - (term1 * sum(term2 .* X(:, col)));
 
     % ============================================================
 
