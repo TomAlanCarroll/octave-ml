@@ -17,11 +17,16 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % Calculate hypothesis
+    predictions = X * theta;
 
+    % Calculate these once
+    term1 = alpha * (1 / m);
+    term2 = predictions - y;
 
-
-
-
+    % Update theta
+    theta(1) = theta(1) - (term1 * sum(term2)); % multiplying by X(:, 1) is not necessary since it is always 1
+    theta(2) = theta(2) - (term1 * sum(term2 .* X(:, 2)));
 
     % ============================================================
 
