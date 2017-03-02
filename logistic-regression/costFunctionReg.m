@@ -17,19 +17,18 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
-thetaFrom1 = [0; theta(2:size(theta), :)];
+% Reuse the existing cost function
+[J, grad] = costFunction(theta, X, y);
 
-% Calculate hypothesis
-hypothesis = sigmoid(X * theta);
+% Incorporate regularization by adding a penalty for thetas
+J_penalty = (lambda / 2 * m) * sum(theta(2:size(theta)) .^ 2);
+grad_penalty = (lambda / m) * theta(2:size(theta));
 
-% Calculate the cost
-J = (1 / m) * ((-y)' * log(hypothesis) - (1 - y)' * log (1 - hypothesis));
-
-% Add the regularization parameter
-J = J + (lambda / 2 * m) * (thetaFrom1' * thetaFrom1);
+% Penalize the cost
+J = J + J_penalty;
 
 % Calculate the gradient
-grad = (1 / m) * (X' * (hypothesis - y) + lambda * thetaFrom1);
+grad(2:size(grad)) = grad(2:size(grad)) + grad_penalty;
 
 % =============================================================
 
