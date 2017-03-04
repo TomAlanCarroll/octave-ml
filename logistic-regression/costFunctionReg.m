@@ -20,15 +20,19 @@ grad = zeros(size(theta));
 % Reuse the existing cost function
 [J, grad] = costFunction(theta, X, y);
 
+theta_size = size(theta);
+
 % Incorporate regularization by adding a penalty for thetas
-J_penalty = (lambda / (2 * m)) * sum(theta .^ 2);
-grad_penalty = (lambda / m) * theta(2:size(theta));
+J_penalty = (lambda / (2 * m)) * sum(theta(2:theta_size) .^ 2);
+grad_penalty = (lambda / m) * theta(2:theta_size);
 
 % Penalize the cost
 J = J + J_penalty;
 
+grad_size = size(grad);
+
 % Calculate the gradient
-grad(2:size(grad)) = grad(2:size(grad)) + grad_penalty;
+grad(2:grad_size) = grad(2:grad_size) + grad_penalty;
 
 % =============================================================
 
