@@ -21,7 +21,7 @@ grad = zeros(size(theta));
 [J, grad] = costFunction(theta, X, y);
 
 % Incorporate regularization by adding a penalty for thetas
-J_penalty = (lambda / 2 * m) * sum(theta(2:size(theta)) .^ 2);
+J_penalty = (lambda / (2 * m)) * sum(theta .^ 2);
 grad_penalty = (lambda / m) * theta(2:size(theta));
 
 % Penalize the cost
