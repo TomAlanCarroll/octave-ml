@@ -37,11 +37,7 @@ grad = zeros(size(theta));
 %
 
 
-
-
-
-
-
+h = sigmoid(X * theta);
 
 
 
