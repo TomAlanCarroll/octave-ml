@@ -58,7 +58,7 @@ for i = 1:num_labels
 	% This function will return theta and the cost 
 	[theta] = fmincg(@(t)(lrCostFunction(t, X, (y == i), lambda)), initial_theta, options);
 	% Set all_theta
-	all_theta(i, :) = theta'
+	all_theta(i, :) = theta';
 end
 
 % =========================================================================
