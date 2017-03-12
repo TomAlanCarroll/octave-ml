@@ -36,10 +36,18 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 
+% Calculate hypothesis
+hypothesis = sigmoid(X * theta);
 
-h = sigmoid(X * theta);
+% Calculate the penalty
+thetaPenalty = [0; theta(2:end, :)];
+penalty = (lambda * (thetaPenalty' * thetaPenalty)) / (2 * m);
 
+% Calculate J
+J = ((-y)' * log(hypothesis) - (1 - y)' * log(1 - hypothesis)) / m + penalty;
 
+% Calculate grad
+grad = (X' * (hypothesis - y) + lambda * thetaPenalty) / m;
 
 % =============================================================
 
