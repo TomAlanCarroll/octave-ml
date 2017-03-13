@@ -21,6 +21,7 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Calculate a1, z2, a2, z3, a3
 a1 = [ones(m, 1), X];
 
 z2 = a1 * Theta1';
