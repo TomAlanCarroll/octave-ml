@@ -16,5 +16,6 @@ h2 = sigmoid([ones(m, 1) h1] * Theta2');
 
 % =========================================================================
 
+% TODO predict the label of an input given the neural network
 
 end
